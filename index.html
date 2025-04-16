@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Admin Panel</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Student Management Admin Panel</h1>
+            <p>Search, filter, and manage student records</p>
+        </div>
+        
+        <div class="card">
+            <div class="controls">
+                <input type="text" id="searchInput" class="search-box" placeholder="Search by name, registration number, or email...">
+                
+                <select id="collegeFilter">
+                    <option value="">All Colleges</option>
+                    <option value="NST">NST</option>
+                    <option value="Ashoka University">Ashoka University</option>
+                </select>
+                
+                <select id="degreeFilter">
+                    <option value="">All Degrees</option>
+                    <option value="BTech">BTech</option>
+                    <option value="BA">BA</option>
+                    <option value="BSc">BSc</option>
+                    <option value="BCom">BCom</option>
+                    <option value="MBA">MBA</option>
+                    <option value="MA">MA</option>
+                </select>
+            </div>
+
+
+            
+            <div class="table-container">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Registration Number</th>
+                            <th>Contact</th>
+                            <th>Email</th>
+                            <th>College</th>
+                            <th>Degree</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Data will be loaded here -->
+                    </tbody>
+                </table>
+                <div id="loadingIndicator" class="loading">Loading student data</div>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    No students found matching your criteria
+                </div>
+            </div>
+            
+            <div class="status-bar">
+                <span id="resultCount">0 students</span>
+                <span id="lastUpdated"></span>
+            </div>
+            
+            <div class="export-container">
+                <button id="exportButton" class="btn btn-primary">
+                    <span class="btn-icon">📊</span>
+                    Export to Excel
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+    <!-- Firebase Firestore -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+    
+    <!-- SheetJS (Excel export library) -->
+    <script src="https://cdn.sheetjs.com/xlsx-0.19.3/package/dist/xlsx.full.min.js"></script>
+    
+    <!-- Our scripts -->
+    <script src="firebase-config.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
